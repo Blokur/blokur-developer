@@ -1,0 +1,532 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://blokur.com/schemas/blokur-publishing-rights.json",
+  "type": "object",
+  "title": "Blokur Work Publishing Rights Schema",
+  "required": [
+    "work"
+  ],
+  "properties": {
+    "work": {
+      "$id": "#/properties/work",
+      "type": "object",
+      "title": "The Work Schema",
+      "description": "A musical work",
+      "default": null,
+      "required": [
+        "title",
+        "writers"
+      ],
+      "properties": {
+        "title": {
+          "$id": "#/properties/work/properties/title",
+          "type": "string",
+          "title": "The Title Schema",
+          "description": "The work title",
+          "default": "",
+          "examples": [
+            "The Example Song"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "writers": {
+          "$id": "#/properties/work/properties/writers",
+          "type": "array",
+          "title": "The Writers Schema",
+          "description": "The list of writers involved in a musical work",
+          "default": null,
+          "minItems": 1,
+          "items": {
+            "$id": "#/properties/work/properties/writers/items",
+            "type": "object",
+            "title": "The Items Schema",
+            "required": [
+              "id",
+              "first_name",
+              "last_name",
+              "ipi",
+              "roles",
+              "publishing_rigts"
+            ],
+            "properties": {
+              "id": {
+                "$id": "#/properties/work/properties/writers/items/properties/id",
+                "type": "integer",
+                "title": "The Id Schema",
+                "description": "A unique identifier for the writer",
+                "default": 0,
+                "examples": [
+                  1000
+                ]
+              },
+              "first_name": {
+                "$id": "#/properties/work/properties/writers/items/properties/first_name",
+                "type": "string",
+                "title": "The First_name Schema",
+                "description": "The first name of the writer",
+                "default": "",
+                "examples": [
+                  "Writer 1 First Name"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "last_name": {
+                "$id": "#/properties/work/properties/writers/items/properties/last_name",
+                "type": "string",
+                "title": "The Last_name Schema",
+                "description": "the last name of the writer",
+                "default": "",
+                "examples": [
+                  "Writer 1 Last Name"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "ipi": {
+                "$id": "#/properties/work/properties/writers/items/properties/ipi",
+                "type": "number",
+                "title": "The Ipi Schema",
+                "description": "The interested party information number of the writer",
+                "default": 0,
+                "examples": [
+                  15471209
+                ]
+              },
+              "ISNI": {
+                "$id": "#/properties/work/properties/writers/items/properties/ISNI",
+                "type": "string",
+                "title": "The Isni Schema",
+                "description": "the international standard name identifier of the writer",
+                "default": "",
+                "examples": [
+                  "1000000000000000"
+                ],
+                "pattern": "^[A-Z]{2}[A-Z0-9]{9}\\\\d"
+              },
+              "roles": {
+                "$id": "#/properties/work/properties/writers/items/properties/roles",
+                "type": "array",
+                "title": "The Roles Schema",
+                "description": "The role of the writer with respect to this work",
+                "default": null,
+                "minItems": 1,
+                "items": {
+                  "$id": "#/properties/work/properties/writers/items/properties/roles/items",
+                  "type": "string",
+                  "title": "The Items Schema",
+                  "default": "",
+                  "examples": [
+                    "composer",
+                    "author",
+                    "arranger"
+                  ],
+                  "pattern": "^(.*)$"
+                }
+              },
+              "publishing_rigts": {
+                "$id": "#/properties/work/properties/writers/items/properties/publishing_rigts",
+                "type": "array",
+                "title": "The Publishing_rigts Schema",
+                "description": "The publishing rights of the writer",
+                "default": null,
+                "minItems": 1,
+                "items": {
+                  "$id": "#/properties/work/properties/writers/items/properties/publishing_rigts/items",
+                  "type": "object",
+                  "title": "The Items Schema",
+                  "required": [
+                    "ownership_shares"
+                  ],
+                  "properties": {
+                    "ownership_shares": {
+                      "$id": "#/properties/work/properties/writers/items/properties/publishing_rigts/items/properties/ownership_shares",
+                      "type": "array",
+                      "title": "The Ownership_shares Schema",
+                      "description": "The writer's ownership shares for the usage of the work",
+                      "default": null,
+                      "minItems": 1,
+                      "items": {
+                        "$id": "#/properties/work/properties/writers/items/properties/publishing_rigts/items/properties/ownership_shares/items",
+                        "type": "object",
+                        "title": "The Items Schema",
+                        "required": [
+                          "right_type",
+                          "share"
+                        ],
+                        "properties": {
+                          "right_type": {
+                            "$id": "#/properties/work/properties/writers/items/properties/publishing_rigts/items/properties/ownership_shares/items/properties/right_type",
+                            "type": "string",
+                            "title": "The Right_type Schema",
+                            "description": "The right type",
+                            "default": "",
+                            "examples": [
+                              "performance",
+                              "mechanical",
+                              "synchronization"
+                            ],
+                            "pattern": "^(.*)$"
+                          },
+                          "share": {
+                            "$id": "#/properties/work/properties/writers/items/properties/publishing_rigts/items/properties/ownership_shares/items/properties/share",
+                            "type": "number",
+                            "title": "The Share Schema",
+                            "description": "Defines the percentage of the writer’s shares of the given rights type",
+                            "default": 0.0,
+                            "examples": [
+                              25.0
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "collecting_shares": {
+                      "$id": "#/properties/work/properties/writers/items/properties/publishing_rigts/items/properties/collecting_shares",
+                      "type": "array",
+                      "title": "The Collecting_shares Schema",
+                      "description": "The collection shares for a writer and for the territory or territories where they apply",
+                      "default": null,
+                      "minItems": 1,
+                      "items": {
+                        "$id": "#/properties/work/properties/writers/items/properties/publishing_rigts/items/properties/collecting_shares/items",
+                        "type": "object",
+                        "title": "The Items Schema",
+                        "required": [
+                          "right_type",
+                          "share",
+                          "territories"
+                        ],
+                        "properties": {
+                          "right_type": {
+                            "$id": "#/properties/work/properties/writers/items/properties/publishing_rigts/items/properties/collecting_shares/items/properties/right_type",
+                            "type": "string",
+                            "title": "The Right_type Schema",
+                            "description": "The right type",
+                            "default": "",
+                            "examples": [
+                              "performance",
+                              "mechanical",
+                              "synchronization"
+                            ],
+                            "pattern": "^(.*)$"
+                          },
+                          "share": {
+                            "$id": "#/properties/work/properties/writers/items/properties/publishing_rigts/items/properties/collecting_shares/items/properties/share",
+                            "type": "number",
+                            "title": "The Share Schema",
+                            "description": "Defines the percentage of the writer’s shares of the given share type",
+                            "default": 0.0,
+                            "examples": [
+                              25.0
+                            ]
+                          },
+                          "territories": {
+                            "$id": "#/properties/work/properties/writers/items/properties/publishing_rigts/items/properties/collecting_shares/items/properties/territories",
+                            "type": "array",
+                            "title": "The Territories Schema",
+                            "description": "The list of territories within which this writer has the right to collect payment for the usage of this work",
+                            "default": null,
+                            "minItems": 1,
+                            "items": {
+                              "$id": "#/properties/work/properties/writers/items/properties/publishing_rigts/items/properties/collecting_shares/items/properties/territories/items",
+                              "type": "string",
+                              "title": "The Items Schema",
+                              "default": "",
+                              "examples": [
+                                "Worldwide"
+                              ],
+                              "pattern": "^(.*)$"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "writer_publisher_links": {
+          "$id": "#/properties/work/properties/writer_publisher_links",
+          "type": "array",
+          "title": "The Writer_publisher_links Schema",
+          "description": "Indicates the link between publishers representing writers that are published",
+          "default": null,
+          "minItems": 1,
+          "items": {
+            "$id": "#/properties/work/properties/writer_publisher_links/items",
+            "type": "object",
+            "title": "The Items Schema",
+            "required": [
+              "writer_id",
+              "publisher_id"
+            ],
+            "properties": {
+              "writer_id": {
+                "$id": "#/properties/work/properties/writer_publisher_links/items/properties/writer_id",
+                "type": "integer",
+                "title": "The Writer_id Schema",
+                "description": "The unique id of the writer",
+                "default": 0,
+                "examples": [
+                  1000
+                ]
+              },
+              "publisher_id": {
+                "$id": "#/properties/work/properties/writer_publisher_links/items/properties/publisher_id",
+                "type": "integer",
+                "title": "The Publisher_id Schema",
+                "description": "The unique id of the publisher",
+                "default": 0,
+                "examples": [
+                  10000
+                ]
+              }
+            }
+          }
+        },
+        "publisher_chains": {
+          "$id": "#/properties/work/properties/publisher_chains",
+          "type": "array",
+          "title": "The Publisher_chains Schema",
+          "description": "Captures information about original publishers, sub publishers, and/or administrators who are involved in the ownership and collection of this work",
+          "default": null,
+          "minItems": 1,
+          "items": {
+            "$id": "#/properties/work/properties/publisher_chains/items",
+            "type": "object",
+            "title": "The Items Schema",
+            "required": [
+              "chain_id",
+              "publishers"
+            ],
+            "properties": {
+              "chain_id": {
+                "$id": "#/properties/work/properties/publisher_chains/items/properties/chain_id",
+                "type": "integer",
+                "title": "The Chain_id Schema",
+                "description": "A number allocated for each distinct publisher chain involved in this work. A publisher chain is started by an original publisher",
+                "default": 0,
+                "examples": [
+                  1
+                ]
+              },
+              "publishers": {
+                "$id": "#/properties/work/properties/publisher_chains/items/properties/publishers",
+                "type": "array",
+                "title": "The Publishers Schema",
+                "description": "The list of publisher entities involved in this publisher chain",
+                "default": null,
+                "minItems": 1,
+                "items": {
+                  "$id": "#/properties/work/properties/publisher_chains/items/properties/publishers/items",
+                  "type": "object",
+                  "title": "The Items Schema",
+                  "description": "The original publisher starts the chain. It is followed by the administrators, sub publishers, and income participants. ",
+                  "default": null,
+                  "required": [
+                    "id",
+                    "sequence_id",
+                    "ipi",
+                    "name",
+                    "type",
+                    "publishing_rigts"
+                  ],
+                  "properties": {
+                    "id": {
+                      "$id": "#/properties/work/properties/publisher_chains/items/properties/publishers/items/properties/id",
+                      "type": "integer",
+                      "title": "The Id Schema",
+                      "description": "A unique identifier of the publisher",
+                      "default": 0,
+                      "examples": [
+                        10000
+                      ]
+                    },
+                    "sequence_id": {
+                      "$id": "#/properties/work/properties/publisher_chains/items/properties/publishers/items/properties/sequence_id",
+                      "type": "integer",
+                      "title": "The Sequence_id Schema",
+                      "description": "The sequence of this publisher within the publisher chain",
+                      "default": 0,
+                      "examples": [
+                        1
+                      ]
+                    },
+                    "ipi": {
+                      "$id": "#/properties/work/properties/publisher_chains/items/properties/publishers/items/properties/ipi",
+                      "type": "integer",
+                      "title": "The Ipi Schema",
+                      "description": "The interested party information number of the publisher",
+                      "default": 0,
+                      "examples": [
+                        11111111
+                      ]
+                    },
+                    "name": {
+                      "$id": "#/properties/work/properties/publisher_chains/items/properties/publishers/items/properties/name",
+                      "type": "string",
+                      "title": "The Name Schema",
+                      "description": "The publisher name",
+                      "default": "",
+                      "examples": [
+                        "Publisher A"
+                      ],
+                      "pattern": "^(.*)$"
+                    },
+                    "type": {
+                      "$id": "#/properties/work/properties/publisher_chains/items/properties/publishers/items/properties/type",
+                      "type": "string",
+                      "title": "The Type Schema",
+                      "description": "The role of this publisher entity",
+                      "default": "",
+                      "examples": [
+                        "Original Publisher",
+                        "Sub Publisher"
+                      ],
+                      "pattern": "^(.*)$"
+                    },
+                    "publishing_rigts": {
+                      "$id": "#/properties/work/properties/publisher_chains/items/properties/publishers/items/properties/publishing_rigts",
+                      "type": "object",
+                      "title": "The Publishing_rigts Schema",
+                      "description": "The publishing rights of the publisher entity",
+                      "default": null,
+                      "required": [
+                        "ownership_shares",
+                        "collecting_shares"
+                      ],
+                      "properties": {
+                        "ownership_shares": {
+                          "$id": "#/properties/work/properties/publisher_chains/items/properties/publishers/items/properties/publishing_rigts/properties/ownership_shares",
+                          "type": "array",
+                          "title": "The Ownership_shares Schema",
+                          "description": "The publisher's ownership shares for the usage of the work",
+                          "default": null,
+                          "minItems": 1,
+                          "items": {
+                            "$id": "#/properties/work/properties/publisher_chains/items/properties/publishers/items/properties/publishing_rigts/properties/ownership_shares/items",
+                            "type": "object",
+                            "title": "The Items Schema",
+                            "required": [
+                              "right_type",
+                              "share"
+                            ],
+                            "properties": {
+                              "right_type": {
+                                "$id": "#/properties/work/properties/publisher_chains/items/properties/publishers/items/properties/publishing_rigts/properties/ownership_shares/items/properties/right_type",
+                                "type": "string",
+                                "title": "The Right_type Schema",
+                                "description": "The right type",
+                                "default": "",
+                                "examples": [
+                                  "performance",
+                                  "mechanical",
+                                  "synchronization"
+                                ],
+                                "pattern": "^(.*)$"
+                              },
+                              "share": {
+                                "$id": "#/properties/work/properties/publisher_chains/items/properties/publishers/items/properties/publishing_rigts/properties/ownership_shares/items/properties/share",
+                                "type": "number",
+                                "title": "The Share Schema",
+                                "description": "Defines the percentage of the publisher's shares of the given share type",
+                                "default": 0.0,
+                                "examples": [
+                                  37.5
+                                ]
+                              }
+                            }
+                          }
+                        },
+                        "collecting_shares": {
+                          "$id": "#/properties/work/properties/publisher_chains/items/properties/publishers/items/properties/publishing_rigts/properties/collecting_shares",
+                          "type": "array",
+                          "title": "The Collecting_shares Schema",
+                          "description": "The collection shares for a publisher and for the territory or territories where they apply",
+                          "default": null,
+                          "minItems": 1,
+                          "items": {
+                            "$id": "#/properties/work/properties/publisher_chains/items/properties/publishers/items/properties/publishing_rigts/properties/collecting_shares/items",
+                            "type": "object",
+                            "title": "The Items Schema",
+                            "required": [
+                              "right_type",
+                              "share",
+                              "territories"
+                            ],
+                            "properties": {
+                              "right_type": {
+                                "$id": "#/properties/work/properties/publisher_chains/items/properties/publishers/items/properties/publishing_rigts/properties/collecting_shares/items/properties/right_type",
+                                "type": "string",
+                                "title": "The Right_type Schema",
+                                "description": "The right type",
+                                "default": "",
+                                "examples": [
+                                  "performance",
+                                  "mechanical",
+                                  "synchronization"
+                                ],
+                                "pattern": "^(.*)$"
+                              },
+                              "share": {
+                                "$id": "#/properties/work/properties/publisher_chains/items/properties/publishers/items/properties/publishing_rigts/properties/collecting_shares/items/properties/share",
+                                "type": "number",
+                                "title": "The Share Schema",
+                                "description": "Defines the percentage of the publisher's shares of the given share type",
+                                "default": 0.0,
+                                "examples": [
+                                  37.5
+                                ]
+                              },
+                              "territories": {
+                                "$id": "#/properties/work/properties/publisher_chains/items/properties/publishers/items/properties/publishing_rigts/properties/collecting_shares/items/properties/territories",
+                                "type": "array",
+                                "title": "The Territories Schema",
+                                "description": "The list of territories within which this publisher has the right to collect payment for the usage of this work",
+                                "default": null,
+                                "minItems": 1,
+                                "items": {
+                                  "$id": "#/properties/work/properties/publisher_chains/items/properties/publishers/items/properties/publishing_rigts/properties/collecting_shares/items/properties/territories/items",
+                                  "type": "string",
+                                  "title": "The Items Schema",
+                                  "default": "",
+                                  "examples": [
+                                    "Worldwide"
+                                  ],
+                                  "pattern": "^(.*)$"
+                                }
+                              },
+                              "excluded_territories": {
+                                "$id": "#/properties/work/properties/publisher_chains/items/properties/publishers/items/properties/publishing_rigts/properties/collecting_shares/items/properties/excluded_territories",
+                                "type": "array",
+                                "title": "The Excluded_territories Schema",
+                                "description": "The list of territories excluded in the excluded from the collection agreement",
+                                "default": null,
+                                "items": {
+                                  "$id": "#/properties/work/properties/publisher_chains/items/properties/publishers/items/properties/publishing_rigts/properties/collecting_shares/items/properties/excluded_territories/items",
+                                  "type": "string",
+                                  "title": "The Items Schema",
+                                  "default": "",
+                                  "examples": [
+                                    "UK"
+                                  ],
+                                  "pattern": "^(.*)$"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
